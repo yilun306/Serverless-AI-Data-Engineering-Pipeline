@@ -1,0 +1,74 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API consumer:HelloWorldFunction (python3.7)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "consumer/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            },
+            "lambda": {
+                "runtime": "python3.7"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API producer:HelloWorldFunction (python3.8)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "producer/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            },
+            "lambda": {
+                "runtime": "python3.8"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "consumer:HelloWorldFunction (python3.7)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "consumer/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "python3.7"
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "producer:HelloWorldFunction (python3.8)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "producer/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {},
+                "runtime": "python3.8"
+            }
+        }
+    ]
+}
